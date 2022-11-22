@@ -33,13 +33,9 @@ export default function Profile(){
         // Get random image of the username
         security_api.get('https://avatars.dicebear.com/api/miniavs/elpapitodelbackend.svg', {withCredentials: false}).then((res) => setAvatar(res.data))
         // Get payment methods of the user 
-        queries_api.get(`/api/metodos/user/${id}`, { params: {
-            "id" : id
-        }}).then(async (res) => {setMethods(res.data['metodos_disponibles'])});
+        queries_api.get(`/api/metodos/user/${id}`).then(async (res) => {setMethods(res.data['metodos_disponibles'])});
         // Get transactions of the user
-        buy_api.get(`/api/transaccion/user/${id}`, { params: {
-            "id": id    
-        }}).then(async (res) => {console.log('transacciones', res.data);setTransactions(res.data['transacciones'])});
+        buy_api.get(`/api/transaccion/user/${id}`).then(async (res) => {console.log('transacciones', res.data);setTransactions(res.data['transacciones'])});
     },[])
 
     const bill = {
