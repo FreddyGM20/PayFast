@@ -14,6 +14,8 @@ const app = express();
 
 app.set('port', process.env.PORT || 8000);
 
+app.use(cookieParser());
+
 //Middleware
 app.use(
   cors({
@@ -22,7 +24,6 @@ app.use(
   })
 );
 
-app.use(cookieParser());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
