@@ -59,7 +59,8 @@ const login = async (req: express.Request, res: express.Response, next) => {
         const token = jwt.sign(payload, process.env.JWT_SECRET || 'my-secret', { expiresIn: "1h" });
         res.cookie("access_token", token, {
           httpOnly: true, //It does not allow any other site to access the cookie,
-          sameSite: 'none'//It allows the cookie to be sent to the server in a cross-site context
+          sameSite: 'none',//It allows the cookie to be sent to the server in a cross-site context
+          secure:true  
         })
         .json({ "token": token, "id" : user.id});
     } catch (err) {
