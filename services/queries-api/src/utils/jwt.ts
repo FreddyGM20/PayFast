@@ -8,7 +8,7 @@ const verifyToken = (req:express.Request, res: express.Response) => {
     console.log(req.cookies);
     jwt.verify(req.cookies.access_token, process.env.JWT_SECRET || 'my-secret', (err, decoded) => {
         if (err) {
-            return 
+            return res.status(401).json({ message: "Unauthorized" });
         }
         req['user'] = decoded;
     });
