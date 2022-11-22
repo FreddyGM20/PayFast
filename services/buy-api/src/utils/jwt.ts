@@ -29,10 +29,7 @@ const verifyUser = async (
     next
     ) => {
     verifyToken(req, res);
-    if (!req["user"]) {
-        return res.status(401).json({ message: "Unauthorized" });
-    }
-    console.log(req.params);
+    console.log(req['user']);
     const userId = req.params["id"] || req.body[""] || req.query["id"];
     console.log("userId: ", userId, " req['user'].id: ", req["user"].id);
     if (req["user"].id == userId || req["user"].isAdmin) {
