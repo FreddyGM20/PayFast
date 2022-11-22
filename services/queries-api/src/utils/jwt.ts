@@ -5,6 +5,7 @@ import {PrismaClient} from '@prisma/client';
 const prisma = new PrismaClient();
 
 const verifyToken = (req:express.Request, res: express.Response) => {
+    console.log(req.cookies);
     jwt.verify(req.cookies.access_token, process.env.JWT_SECRET || 'my-secret', (err, decoded) => {
         if (err) {
             return 
