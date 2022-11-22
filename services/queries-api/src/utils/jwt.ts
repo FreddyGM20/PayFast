@@ -10,6 +10,7 @@ const verifyToken = (req:express.Request, res: express.Response) => {
         if (err) {
             return res.status(401).json({ message: "Unauthorized" });
         }
+        console.log(decoded);
         req['user'] = decoded;
     });
 };
