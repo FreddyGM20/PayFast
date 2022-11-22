@@ -60,8 +60,8 @@ const login = async (req: express.Request, res: express.Response, next) => {
         res.cookie("access_token", token, {
           httpOnly: true, //It does not allow any other site to access the cookie,
           sameSite: 'none'//It allows the cookie to be sent to the server in a cross-site context
-        });
-        res.json({ "token": token, "id" : user.id});
+        })
+        .json({ "token": token, "id" : user.id});
     } catch (err) {
         next(err)
     }
